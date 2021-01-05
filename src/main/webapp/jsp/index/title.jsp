@@ -4,8 +4,8 @@
         <a style="font-size: 30px" href="<%=request.getContextPath()%>/">xwpt</a>
     </div>
     <li class="layui-nav-item"><a href="">主页</a></li>
-    <li class="layui-nav-item"><a href="">任务中心</a></li>
-    <li class="layui-nav-item"><a href="">失物招领</a></li>
+    <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=myFetchList">任务中心</a></li>
+    <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=LostList">失物招领</a></li>
 
     <li class="layui-nav-item" lay-unselect=""  style="float: right">
         <a href="">任务类型</a>

@@ -108,7 +108,7 @@
         var url = "";
         var task = "";
         var i = getTaskid();
-        if(i!=null&&i!=undefined){
+        if(i!=null&&i!=undefined&&i!=""){
             url = "<%=request.getContextPath()%>/task/updateTask"
             task = {
                 uid:i,
@@ -120,7 +120,6 @@
                 demandtype:demandtype,
                 types:types
             }
-
         }else {
             url = "<%=request.getContextPath()%>/task/addTask"
             task = {

@@ -8,8 +8,9 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/">主页</a></li>
-            <li class="layui-nav-item"><a href="">任务中心</a></li>
-            <li class="layui-nav-item"><a href="">失物招领</a></li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=myFetchList">任务中心</a></li>
+            <li class="layui-nav-item"><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=LostList">失物招领</a></li>
+
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item" id="sign" style="float: right"><a href="<%=request.getContextPath()%>/jsp/sign.jsp" >注册</a></li>
