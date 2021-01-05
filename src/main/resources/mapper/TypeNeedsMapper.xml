@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xwpt.dao.TypeNeedsMapper">
+    <select id="findAll" resultType="TypeNeeds">
+		SELECT * FROM type_needs
+	</select>
+    <select id="findbyid" resultType="TypeNeeds" parameterType="String">
+		SELECT * FROM type_needs where uid = #{uid}
+	</select>
+
+    <insert id="addtype">
+        <selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        insert into type_needs(uid,type,name,subkey)
+        values(#{uid},#{type},#{name},#{subkey})
+    </insert>
+
+    <delete id="deleteType" parameterType="String">
+		delete from type_needs where
+		uid=#{uid}
+	</delete>
+
+</mapper>

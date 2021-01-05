@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xwpt.dao.UserMapper">
+    <!-- 目的：为dao接口方法提供sql语句配置 -->
+    <select id="queryById" resultType="User" parameterType="long">
+        <!-- 具体的sql -->
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+	<select id="login" resultType="User" parameterType="String">
+		<!-- 具体的sql -->
+		SELECT * FROM user WHERE username = #{username} and password = #{password}
+	</select>
+
+	<select id="queryByUserName" resultType="User" parameterType="String">
+		<!-- 具体的sql -->
+		SELECT * FROM user WHERE username = #{username}
+	</select>
+
+	<select id="queryAll" resultType="User">
+		SELECT * FROM user
+	</select>
+
+    <update id="update">
+		UPDATE user
+		SET password = #{password}
+		WHERE
+			username = #{username}
+	</update>
+
+	<update id="updateToUser"  parameterType="User">
+        UPDATE user set
+        uname = #{uname},age = #{age},sno = #{sno},stu = #{stu},sex = #{sex},password = #{password}
+    	 where id = #{id}
+    </update>
+
+	<insert id="addUser"  parameterType="User">
+        insert into user(username,password,uname,age,sex,sno,stu,type)
+        values(#{username},#{password},#{uname},#{age},#{sex},#{sno},#{stu},0)
+    </insert>
+
+	<delete id="deleteId" parameterType="int">
+		delete from user where
+		id=#{id}
+	</delete>
+</mapper>

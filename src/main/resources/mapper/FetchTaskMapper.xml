@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xwpt.dao.FetchTaskMapper">
+    <select id="findAll" resultType="UserFetch">
+		SELECT * FROM user_fetch where 1 = 1
+        <if test="UserId != null and UserId != ''">
+            and user_id = #{UserId}
+        </if>
+	</select>
+    <insert id="add">
+        <selectKey keyProperty="uid" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') from dual
+        </selectKey>
+        insert into user_fetch(uid,user_id,task_id)
+        values(#{uid},#{UserId},#{TaskId})
+    </insert>
+    <delete id="deleteToUserIdAndTaslId" parameterType="String">
+		delete from user_fetch where
+		user_id=#{userid} and task_id=#{uid}
+	</delete>
+
+
+</mapper>

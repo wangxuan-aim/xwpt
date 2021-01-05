@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xwpt.dao.TaskMapper">
+    <select id="findAll" resultType="Task" parameterType="String">
+		SELECT * FROM task where  sno = #{sno}
+		<if test="types != null and types != ''">
+			and types = #{types}
+		</if>
+	</select>
+    <select id="findAlltoAdmin" resultType="Task">
+		SELECT * FROM task
+	</select>
+	<select id="findtoNotFetch" resultType="Task">
+		SELECT * FROM task where types = '1'
+	</select>
+
+	<select id="findByUid" resultType="Task">
+		SELECT * FROM task where uid = #{uid}
+	</select>
+	<update id="updateTask">
+		UPDATE task
+		SET demand = #{demand}
+		,describes = #{describes}
+		,demand =#{demand}
+		,remuneration =#{remuneration}
+		,critetime =#{critetime}
+		,endtime =#{endtime}
+		,demandtype =#{demandtype}
+		,types =#{types}
+		WHERE
+			uid = #{uid}
+	</update>
+	<update id="updateType">
+		UPDATE task
+		SET types = '2'
+		WHERE
+			uid = #{uid}
+	</update>
+
+	<update id="update">
+		UPDATE task
+		SET types = #{types}
+		WHERE
+			uid = #{uid}
+	</update>
+
+    <insert id="addTesk">
+		<selectKey keyProperty="uid" resultType="String" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
+        insert into task(uid,demand,critetime,endtime,sno,demandtype,types,remuneration,describes,creatdate)
+        values(#{uid},#{demand},#{critetime},#{endtime},#{sno},#{demandtype},#{types},#{remuneration},#{describes},#{creatDate})
+    </insert>
+
+	<delete id="deleteByUId" parameterType="String">
+		delete from task where
+		uid=#{uid}
+	</delete>
+
+</mapper>
