@@ -31,10 +31,36 @@
             editor.create();
         }}
         )
-    function save() {
-        var title = $("#title").val();
-        var describes = editor.txt.html();
 
+    function save() {
+        var i = getlostss();
+        var datas = {};
+        console.log(i)
+        if(i!=null&&i!=undefined){
+            if(i=="1"){
+                datas = {
+                'title':$("#title").val(),
+                    'describes':editor.txt.html(),
+                    'type':'1'
+                }
+                }
+            if(i=="2"){
+                datas = {
+                    'title':$("#title").val(),
+                    'describes':editor.txt.html(),
+                    'type':'2'
+                }
+            }
+            }
+
+        $.ajax({
+            url:'<%=request.getContextPath()%>/LostFound/pickAndLost',
+            methods:'post',
+            data:datas,
+            success:function (data) {
+                alert(data.msg);
+            }
+        })
     }
 </script>
 </body>

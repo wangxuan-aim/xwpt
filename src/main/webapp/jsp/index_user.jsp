@@ -58,8 +58,9 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a href="javascript:;">失物招领</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" onclick='loadHtmls("lostFound")'>我捡到了</a></dd>
-                        <dd><a href="javascript:;" onclick='loadHtmls("lostFound")'>我遗失了</a></dd>
+                        <dd><a href="javascript:;" onclick='loadHtmls("LostList")'>失物招领信息</a></dd>
+                        <dd><a href="javascript:;" onclick='loadHtmls("lostFound",null,"1")'>我捡到了</a></dd>
+                        <dd><a href="javascript:;" onclick='loadHtmls("lostFound",null,"2")'>我遗失了</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -123,11 +124,18 @@
         })
     })
     var html1 = "";
-    var taskid = ""
+    var taskid = "";
+    var lostss = "";
     function getTaskid(){
         return this.taskid;
     }
-    function loadHtmls(data,data1){
+    function getlostss(){
+        return this.lostss;
+    }
+    function loadHtmls(data,data1,losts){
+        taskid = data1;
+        lostss = losts;
+
         if(html1 == data){
             return false;
         }else {
@@ -145,7 +153,6 @@
                 }
             });
         }
-            taskid = data1;
 
     }
     layui.use('element', function(){
