@@ -18,4 +18,6 @@ public interface TaskMapper {
     int update(Task task);
 
     int updateTask(Task task);
+
+    List<Task> findtoNotFetchToType(String types);
 }

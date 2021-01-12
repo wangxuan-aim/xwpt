@@ -17,20 +17,29 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
-
         //第一个实例
         var tableIns = table.render({
             elem: '#task'
             ,height: 700
             ,url: '<%=request.getContextPath()%>/task/findtoNotFetch' //数据接口
+            , where: {types: ""}
             ,page: true //开启分页
             ,cols: [[ //表头
                 {field: 'demand', title: '需求', sort: true, fixed: 'left'}
                 ,{field: 'critetime', title: '开始时间',}
                 ,{field: 'endtime', title: '结束时间', sort: true}
                 ,{field: 'remuneration', title: '报酬',sort: true}
+                ,{field: 'types', title: '任务类型',sort: true}
                 ,{fixed: 'right',  align:'center', toolbar: '#barDemo'}
             ]],parseData: function(res){ //res 即为原始返回的数据
+                for(var i=0;i<res.length;i++){
+                    if(res[i].types == "1"){
+                        res[i].types = "代取"
+                    }
+                    if(res[i].types == "2"){
+                        res[i].types = "跑腿"
+                    }
+                }
                 return {
                     "code": 0, //解析接口状态
                     "msg": "", //解析提示文本

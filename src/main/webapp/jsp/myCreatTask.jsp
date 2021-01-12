@@ -11,9 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-<a>未完成:<input type="radio" name="type" value="1" title="未完成" checked></a>
-<a>已接取未完成:<input type="radio" name="type" value="2" title="已接取未完成"></a>
-<a>已完成：<input type="radio" name="type" value="3" title="已完成"></a>
+<div style="text-align: center"><a>未完成:<input type="radio" name="type" value="1" title="未完成" checked></a>
+    <a>已接取未完成:<input type="radio" name="type" value="2" title="已接取未完成"></a>
+    <a>已完成：<input type="radio" name="type" value="3" title="已完成"></a></div>
 <table id="demo" lay-filter="test"></table>
 
 <script type="text/html" id="barDemo">

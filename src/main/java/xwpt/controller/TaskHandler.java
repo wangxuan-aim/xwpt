@@ -41,8 +41,12 @@ public class TaskHandler {
 
     @ApiOperation(value = "查找所有未接取任务")
     @GetMapping("/findtoNotFetch")
-    private List<Task> findAlltoNotEnd(){
-        return taskService.findtoNotFetch();
+    private List<Task> findAlltoNotEnd(@RequestParam String types){
+        if(types==null||types==""){
+            return taskService.findtoNotFetch();
+        }
+        else
+            return taskService.findtoNotFetchToType(types);
     }
 
     @ApiOperation(value = "接取任务")

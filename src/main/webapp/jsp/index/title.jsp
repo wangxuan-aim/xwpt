@@ -18,7 +18,7 @@
     <li class="layui-nav-item" lay-unselect="" id="user" style="float: right">
         <a href="javascript:;"><%=request.getSession().getAttribute("xwptU")%></a>
         <dl class="layui-nav-child">
-            <dd><a href="<%=request.getContextPath()%>/jsp/index_user.jsp">个人中心</a></dd>
+            <dd><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=myCreatTask">个人中心</a></dd>
             <dd><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=addTask">发布任务</a></dd>
             <dd><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=myCreatTask">任务管理</a></dd>
             <dd><a href="<%=request.getContextPath()%>/jsp/index_user.jsp?type=user">个人信息</a></dd>
@@ -79,22 +79,6 @@
         })
     }
     function findNeed(type) {
-        $.ajax({
-            url:'<%=request.getContextPath()%>/task/findNeedtoType',
-            methods:'get',
-            data:type,
-            success:function (data) {
-                if(data.code == 500){
-                    window.location.href = "<%=request.getContextPath()%>/jsp/index.jsp";
-                }
-                else if(data.code == 200){
-                    alert(data);
-                    window.location.href = "<%=request.getContextPath()%>/jsp/index.jsp";
-                }
-            },
-            error:function (data) {
-                alert(data.msg);
-            }
-        })
+           window.location.href = "<%=request.getContextPath()%>/jsp/index_user.jsp?type=taskList&types="+type;
     }
 </script>

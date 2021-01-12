@@ -15,7 +15,9 @@
 	<select id="findtoNotFetch" resultType="Task">
 		SELECT * FROM task where types = '1'
 	</select>
-
+	<select id="findtoNotFetchToType" resultType="Task" parameterType="String">
+		SELECT * FROM task where types = #{types}
+	</select>
 	<select id="findByUid" resultType="Task">
 		SELECT * FROM task where uid = #{uid}
 	</select>

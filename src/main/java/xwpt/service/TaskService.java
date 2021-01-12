@@ -22,4 +22,6 @@ public interface TaskService {
     R updateTask(Task task);
 
     int update(Task task);
+
+    List<Task> findtoNotFetchToType(String types);
 }

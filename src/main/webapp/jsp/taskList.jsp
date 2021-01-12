@@ -21,13 +21,16 @@
 <script>
     layui.use('table', function(){
         var table = layui.table;
-
+        var category=window.location.search;
+        var cateval = category.substring(category.lastIndexOf('=')+1, category.length);
+        debugger
         //第一个实例
         var tableIns = table.render({
             elem: '#demo'
             ,height: 700
             ,url: '<%=request.getContextPath()%>/task/findtoNotFetch' //数据接口
             ,page: true //开启分页
+            , where: {types: cateval}
             ,cols: [[ //表头
                 {field: 'demand', title: '需求', sort: true, fixed: 'left'}
                 ,{field: 'critetime', title: '开始时间',}

@@ -123,6 +123,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> findtoNotFetchToType(String types) {
+        return taskMapper.findtoNotFetchToType(types);
+    }
+
+    @Override
     public List<Task> myEndhList(int id) {
 
         List<Task> tasks = new ArrayList<Task>();
