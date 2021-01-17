@@ -37,10 +37,10 @@ public class UserHandler {
 
     @ApiOperation(value = "更改账户信息")
     @RequestMapping("/updateToUser")
-    private R updateToUser(@RequestParam("uname") String uname,@RequestParam("sno") String sno, @RequestParam("age")int age, @RequestParam("stu")String stu, @RequestParam("sex")String sex,@RequestParam("password")String password, HttpServletRequest request){
+    private R updateToUser(@RequestParam("uname") String uname,@RequestParam("sno") String sno, @RequestParam("age")int age, @RequestParam("stu")String stu, @RequestParam("sex")String sex, HttpServletRequest request){
         String username = (String) request.getSession().getAttribute("xwptU");
         if(!"".equals(username)){
-            return userService.updateToUser(uname,age,stu,sex,username,sno,password);
+            return userService.updateToUser(uname,age,stu,sex,username,sno);
         }
         else
             return R.error("当前登录信息失效");

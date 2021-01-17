@@ -12,7 +12,7 @@ public interface UserService {
     List<User> login(String username,String password);
     int getUserName(String username);
 
-    R updateToUser(String uname, int age, String stu, String sex, String username,String sno,String password);
+    R updateToUser(String uname, int age, String stu, String sex, String username,String sno);
 
     User findByUser(String username);
 }

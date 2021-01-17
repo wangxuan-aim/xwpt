@@ -60,18 +60,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public R updateToUser(String uname, int age, String stu, String sex, String username,String sno,String  password) {
+    public R updateToUser(String uname, int age, String stu, String sex, String username,String sno) {
         User users = userMapper.queryByUserName(username);
         users.setUname(uname);
         users.setAge(age);
         users.setStu(stu);
         users.setSex(sex);
         users.setSno(sno);
-        if(password!=null){
-            if(!"".equals(password)){
-               users.setPassword(password);
-            }
-        }
         int i = userMapper.updateToUser(users);
         if(i>0){
             return R.ok();

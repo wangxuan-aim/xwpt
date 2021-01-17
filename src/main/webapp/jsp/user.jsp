@@ -66,7 +66,13 @@
                 $.ajax({
                     methods:'post',
                     url:"<%=request.getContextPath()%>/user/updateToUser", //需要获取的bai页面du内容zhidao
-                    data:data.field,
+                    data:{uname:$("#uname").val(),
+                        sno:$("#sno").val(),
+                        age:$("#age").val(),
+                        stu:$("#stu").val(),
+                        sex:$("input[type=radio]:checked").val()
+
+                    },
                     success:function(data){
                         alert(data.msg);
                         console.log(data)
@@ -89,8 +95,8 @@
                         $("#age").val(data.age);
                         $("#stu").val(data.stu);
                         if(data.sex =="女"){
-                            $("#boy").removeAttribute("checked");
-                            $("#girl").setAttribute("checked")
+                            $('#boy').attr('checked',false)
+                            $('#girl').attr('checked','true')
                         }
                         console.log("1")
                     }else {
