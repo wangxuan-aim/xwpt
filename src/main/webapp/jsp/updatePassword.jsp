@@ -40,14 +40,13 @@
 
     layui.use('form', function(){
         var form = layui.form;
-
         //监听提交
         form.on('submit(formDemo)', function(data){
             if(data.field.password == data.field.password1){
                 $.ajax({
-                    methods:'post',
-                    url:"<%=request.getContextPath()%>/user/updateToUser", //需要获取的bai页面du内容zhidao
-                    data:data.field,
+                    type:'post',
+                    url:"<%=request.getContextPath()%>/user/update", //需要获取的bai页面du内容zhidao
+                    data:{password:$("#password").val()},
                     success:function(data){
                         alert(data.msg);
                         console.log(data)

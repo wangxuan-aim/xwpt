@@ -31,8 +31,12 @@ public class UserHandler {
     }
     @ApiOperation(value = "更改账户密码")
     @PostMapping("/update")
-    private R update(@RequestParam("username") String username, @RequestParam("password")String password){
-        return userService.update(username,password);
+    private R update(@RequestParam("password")String password, HttpServletRequest request){
+        String username = (String) request.getSession().getAttribute("xwptU");
+        if(!"".equals(username)){
+            return userService.update(username,password);
+        }else
+            return R.error("请先登录");
     }
 
     @ApiOperation(value = "更改账户信息")

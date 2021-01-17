@@ -117,7 +117,7 @@
                 for(var i=0;i<data.length;i++){
                     appends += "<dd><a href=\"javascript:;\" onclick='findNeed("+data[i].type+")'>"+data[i].name+"</a></dd>";
                 }
-                $("#needs").append(appends);
+                $("#needs").html(appends);
             },
             error:function (data) {
                 alert(data.msg);
@@ -155,6 +155,26 @@
             });
         }
 
+    }
+
+    function logout() {
+        $.ajax({
+            url:'<%=request.getContextPath()%>/logOut',
+            methods:'post',
+            data:"",
+            success:function (data) {
+                if(data.code == 500){
+                    window.location.href = "<%=request.getContextPath()%>/jsp/index.jsp";
+                }
+                else if(data.code == 200){
+                    alert(data.msg);
+                    window.location.href = "<%=request.getContextPath()%>/jsp/index.jsp";
+                }
+            },
+            error:function (data) {
+                alert(data.msg);
+            }
+        })
     }
     layui.use('element', function(){
         var element = layui.element;
