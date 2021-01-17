@@ -49,7 +49,7 @@
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button type="reset" id="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
         </form>
@@ -57,7 +57,28 @@
 
 
     <script>
+
+        layui.use('form', function(){
+            var form = layui.form;
+
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                $.ajax({
+                    methods:'post',
+                    url:"<%=request.getContextPath()%>/user/updateToUser", //需要获取的bai页面du内容zhidao
+                    data:data.field,
+                    success:function(data){
+                        alert(data.msg);
+                        console.log(data)
+                    }
+                });
+                // layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        });
+
         $(function () {
+            $("#reset").click();
             $.ajax({
                 url:'<%=request.getContextPath()%>/user/findByUser',
                 methods:'post',
@@ -81,24 +102,6 @@
                 }
             })
         })
-        layui.use('form', function(){
-            var form = layui.form;
-
-            //监听提交
-            form.on('submit(formDemo)', function(data){
-                $.ajax({
-                    methods:'post',
-                    url:"<%=request.getContextPath()%>/user/updateToUser", //需要获取的bai页面du内容zhidao
-                    data:data.field,
-                    success:function(data){
-                        alert(data.msg);
-                        console.log(data)
-                    }
-                });
-                // layer.msg(JSON.stringify(data.field));
-                return false;
-            });
-        });
     </script>
 </body>
 </html>
