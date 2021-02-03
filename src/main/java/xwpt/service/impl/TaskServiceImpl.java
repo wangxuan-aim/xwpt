@@ -66,18 +66,22 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public R fetchTouser(UserFetch userFetch) {
         List<Task> tasks = taskMapper.findByUid(userFetch.getTaskId());
-        Task task =  tasks.get(0);
-        task.setTypes("2");
-        int i = taskMapper.updateType(task);
-        if(i==0){
-            return R.error("任务状态更改失败");
-        }
-        else {
-            int s = fetchTaskMapper.add(userFetch);
-            if(s>0){
-                return R.ok("接取成功");
-            }else {
-                return R.error("创建任务失败");
+        if(tasks.get(0).getTypes()!="1"){
+            return R.error("该任务已接取或已完成");
+        }else {
+            Task task =  tasks.get(0);
+            task.setTypes("2");
+            int i = taskMapper.updateType(task);
+            if(i==0){
+                return R.error("任务状态更改失败");
+            }
+            else {
+                int s = fetchTaskMapper.add(userFetch);
+                if(s>0){
+                    return R.ok("接取成功");
+                }else {
+                    return R.error("创建任务失败");
+                }
             }
         }
     }

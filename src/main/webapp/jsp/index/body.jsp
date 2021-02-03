@@ -58,9 +58,8 @@
             } else if(layEvent === 'fetch'){
                 if(<%=request.getSession().getAttribute("xwptU")%>){
                     layer.confirm('确定接取吗', function(index){
-                        obj.del(); //删除对应行（tr）的DOM结构
+                        obj.del();
                         layer.close(index);
-                        //向服务端发送删除指令
                         $.ajax({
                             url:'<%=request.getContextPath()%>/task/fetchTouser',
                             type:'post',
