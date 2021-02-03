@@ -79,6 +79,6 @@
         })
     }
     function findNeed(type) {
-           window.location.href = "<%=request.getContextPath()%>/jsp/index_user.jsp?type=taskList&types="+type;
+           window.location.href = "<%=request.getContextPath()%>/jsp/index_user.jsp?type=taskListToType&types="+type;
     }
 </script>

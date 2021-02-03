@@ -22,6 +22,7 @@
     layui.use('table', function(){
         var table = layui.table;
         var category=window.location.search;
+        var cateval = category.substring(category.lastIndexOf('=')+1, category.length);
         debugger
         //第一个实例
         var tableIns = table.render({
@@ -29,7 +30,7 @@
             ,height: 700
             ,url: '<%=request.getContextPath()%>/task/findtoNotFetch' //数据接口
             ,page: true //开启分页
-            , where: {types: ""}
+            , where: {types: cateval}
             ,cols: [[ //表头
                 {field: 'demand', title: '需求', sort: true, fixed: 'left'}
                 ,{field: 'critetime', title: '开始时间',}
@@ -50,8 +51,7 @@
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
-                window.open('<%=request.getContextPath()%>/jsp/preview.jsp?uid='+data.uid);
-                // layer.msg('查看操作');
+                layer.msg('查看操作');
             } else if(layEvent === 'fetch'){
                 layer.confirm('确定接取吗', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构

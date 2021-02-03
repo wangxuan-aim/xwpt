@@ -53,7 +53,8 @@
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
-                layer.msg('查看操作');
+                window.open('<%=request.getContextPath()%>/jsp/preview.jsp?uid='+data.uid);
+                // layer.msg('查看操作');
             } else if(layEvent === 'fetch'){
                 if(<%=request.getSession().getAttribute("xwptU")%>){
                     layer.confirm('确定接取吗', function(index){

@@ -176,6 +176,11 @@
             }
         })
     }
+
+    function findNeed(type) {
+        window.location.href = "<%=request.getContextPath()%>/jsp/index_user.jsp?type=taskListToType&types="+type;
+    }
+
     layui.use('element', function(){
         var element = layui.element;
 
