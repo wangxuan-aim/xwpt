@@ -47,7 +47,7 @@
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
-                layer.msg('查看操作');
+                window.open('<%=request.getContextPath()%>/jsp/preview.jsp?uid='+data.uid+"&types=1");
             }
         });
     });

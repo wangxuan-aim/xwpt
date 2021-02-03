@@ -70,7 +70,7 @@
                     })
                 })
             } else if(layEvent === 'detail'){
-                layer.msg('查看');
+                window.open('<%=request.getContextPath()%>/jsp/preview.jsp?uid='+data.uid+"&types=1");
             }
         });
     });

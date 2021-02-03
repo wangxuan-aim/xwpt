@@ -50,7 +50,7 @@
             var data = obj.data //获得当前行数据
                 ,layEvent = obj.event; //获得 lay-event 对应的值
             if(layEvent === 'detail'){
-                layer.msg('查看操作');
+                window.open('<%=request.getContextPath()%>/jsp/preview.jsp?uid='+data.uid+"&types=1");
             } else if(layEvent === 'fetchend'){
                 layer.confirm('确定结束任务吗', function(index){
                     obj.del(); //删除对应行（tr）的DOM结构

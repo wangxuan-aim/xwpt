@@ -60,6 +60,10 @@
         });
     });
     function logout() {
+        if(!<%=request.getSession().getAttribute("xwptU")%>){
+            alert("请先登录");
+            return ;
+        }
         $.ajax({
             url:'<%=request.getContextPath()%>/logOut',
             methods:'post',
@@ -79,6 +83,10 @@
         })
     }
     function findNeed(type) {
+        if(!<%=request.getSession().getAttribute("xwptU")%>){
+            alert("请先登录");
+            return ;
+        }
            window.location.href = "<%=request.getContextPath()%>/jsp/index_user.jsp?type=taskListToType&types="+type;
     }
 </script>

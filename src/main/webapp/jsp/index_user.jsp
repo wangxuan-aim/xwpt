@@ -134,6 +134,10 @@
         return this.lostss;
     }
     function loadHtmls(data,data1,losts){
+        if(!<%=request.getSession().getAttribute("xwptU")%>){
+            alert("请先登录");
+            return ;
+        }
         taskid = data1;
         lostss = losts;
 
@@ -158,6 +162,10 @@
     }
 
     function logout() {
+        if(!<%=request.getSession().getAttribute("xwptU")%>){
+            alert("请先登录");
+            return ;
+        }
         $.ajax({
             url:'<%=request.getContextPath()%>/logOut',
             methods:'post',
@@ -178,10 +186,15 @@
     }
 
     function findNeed(type) {
+        if(!<%=request.getSession().getAttribute("xwptU")%>){
+            alert("请先登录");
+            return ;
+        }
         window.location.href = "<%=request.getContextPath()%>/jsp/index_user.jsp?type=taskListToType&types="+type;
     }
 
     layui.use('element', function(){
+
         var element = layui.element;
 
         //一些事件监听

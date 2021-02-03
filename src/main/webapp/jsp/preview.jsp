@@ -27,7 +27,10 @@
                 success:function(data){
                     $("#pre").append("<p style='font-size: 30px;text-align: center'>任务内容</p><hr /><br>")
                     $("#pre").append(data.describes)
-                    $("#pre").append("<hr /><p style='font-size: 50px;text-align: center'><button type=\"button\" class=\"layui-btn\" onclick='fetchs()'>接取任务</button></P>")
+                    if(data.type == "1"){
+                        $("#pre").append("<hr /><p style='font-size: 50px;text-align: center'><button type=\"button\" class=\"layui-btn\" onclick='fetchs()'>接取任务</button></P>")
+                    }
+
                 }
             })
         }
